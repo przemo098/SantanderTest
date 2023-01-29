@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-//@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE,
-//        proxyMode = ScopedProxyMode.TARGET_CLASS)
 public final class FxManagerService implements IFxManagerService {
     private FxState fxState;
     private FxManagerService(FxState fxState) {

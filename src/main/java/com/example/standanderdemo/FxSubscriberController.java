@@ -4,7 +4,6 @@ import com.example.standanderdemo.services.FxParserService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 
-@SpringBootApplication
 @RestController
 @RequestMapping("fx/subscriber")
 public class FxSubscriberController {

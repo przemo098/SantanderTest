@@ -1,32 +1,37 @@
 package com.example.standanderdemo.model;
 
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.UUID;
 
-public class Instrument {
+public class Instrument extends InstrumentDto {
     static BigDecimal BidMargin = BigDecimal.valueOf(0.99);
     static BigDecimal AskMargin = BigDecimal.valueOf(1.01);
 
-    public Instrument(String name, String bid, String ask, String timeStamp) {
-        Id = UUID.randomUUID();
-        Name = name;
-        setBidValue(new BigDecimal(bid));
-        setAskValue(new BigDecimal(ask));
-        String pattern = "dd-MM-yyyy HH:mm:ss:SSS";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
-        LocalDateTime localDateTime = LocalDateTime.from(formatter.parse(timeStamp));
-        TimeStamp = Timestamp.valueOf(localDateTime);
+    public Instrument(String name, String bid, String ask, String timeStampString) {
+        super(name, getBidValue(new BigDecimal(bid)), getAskValue(new BigDecimal(ask)), getTimeStamp(timeStampString));
     }
 
     private void setBidValue(BigDecimal value){
         Bid = value.multiply(BidMargin);
     }
+    static private BigDecimal getBidValue(BigDecimal value){
+        return value.multiply(BidMargin);
+    }
+   static private Timestamp getTimeStamp(String value){
+       String pattern = "dd-MM-yyyy HH:mm:ss:SSS";
+       DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+       LocalDateTime localDateTime = LocalDateTime.from(formatter.parse(value));
+       return Timestamp.valueOf(localDateTime);
+    }
 
     private void setAskValue(BigDecimal value){
         Ask = value.multiply(BidMargin);
+    }
+    static private BigDecimal getAskValue(BigDecimal value){
+        return value.multiply(AskMargin);
     }
 
     public void Adjust(FxAdjustment newValues){
@@ -36,12 +41,6 @@ public class Instrument {
             TimeStamp = newValues.TimeStamp;
         }
     }
-
-    UUID Id;
-    String Name;
-    BigDecimal Bid;
-    BigDecimal Ask;
-    Timestamp TimeStamp;
 
     public String GetName() {
         return Name;

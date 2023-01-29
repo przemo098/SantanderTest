@@ -18,13 +18,13 @@ class ParserTest {
 
         var result = parser.Parse(csv);
         assertThat(result.get(0).GetName()).isEqualTo("EUR/USD");
-        assertThat(result.get(0).GetAsk()).isEqualByComparingTo(BigDecimal.valueOf(1.188));
         assertThat(result.get(0).GetBid()).isEqualByComparingTo(BigDecimal.valueOf(1.089000));
+        assertThat(result.get(0).GetAsk()).isEqualByComparingTo(BigDecimal.valueOf(1.212));
         assertThat(result.get(0).GetTimeStamp()).isEqualTo(Timestamp.valueOf("2020-06-01 12:01:01.001"));
 
         assertThat(result.get(1).GetName()).isEqualTo("EUR/JPY");
-        assertThat(result.get(1).GetAsk()).isEqualByComparingTo(BigDecimal.valueOf(118.7010));
         assertThat(result.get(1).GetBid()).isEqualByComparingTo(BigDecimal.valueOf(118.4040));
+        assertThat(result.get(1).GetAsk()).isEqualByComparingTo(BigDecimal.valueOf(121.0990));
         assertThat(result.get(1).GetTimeStamp()).isEqualTo(Timestamp.valueOf("2020-06-01 12:01:02.002"));
     }
 }
