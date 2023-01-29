@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
+public
 class FxState {
     public Map<String, Instrument> Instruments = new HashMap<String, Instrument>();
     public String[] Subscribers = new String[] {};

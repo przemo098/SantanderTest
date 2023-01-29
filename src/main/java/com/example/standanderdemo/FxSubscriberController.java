@@ -19,7 +19,7 @@ public class FxSubscriberController {
     @PostMapping("/update")
     public String OnMessage(@RequestBody String update) {
         var instrumentUpdates = parser.Parse(update);
-        manager.updates(instrumentUpdates);
+        manager.Update(instrumentUpdates);
         return "Success";
     }
 }

@@ -28,3 +28,5 @@ class ParserTest {
         assertThat(result.get(1).GetTimeStamp()).isEqualTo(Timestamp.valueOf("2020-06-01 12:01:02.002"));
     }
 }
+
+

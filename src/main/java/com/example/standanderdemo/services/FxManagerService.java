@@ -28,7 +28,7 @@ public final class FxManagerService implements IFxManagerService {
     }
 
     @Override
-    public void updates(List<FxAdjustment> newInstruments){
+    public void Update(List<FxAdjustment> newInstruments){
         for (var instrument : newInstruments)
         {
             UpdateInstrument(instrument);
